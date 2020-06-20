@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+    text-align: center;
+    font-size: 60px;
+    margin-top: 0px;
+    font-family: Verdana;
+    font-weight: bold;
+    font-style: italic;
+    background-image: url(background.png);
+    background-size: 1920px 1080px;
+}
+img {
+    animation: spin 5s infinite linear;
+}
+@keyframes spin {
+    0% {
+		transform: rotateZ(0);
+	}
+	100% {
+		transform: rotateZ(360deg);
+	}
+}
+</style>
+</head>
+<body>
+    <iframe allow="autoplay" id="audio" hidden><audio src="music.wav" autoplay="true"></audio></iframe>
+
+<p id="countdown"></p>
+<img width="512" alt="Aperture Science" src="Aperture_Science.svg">
+
+<script>
+var countDownDate = new Date("Jun 21, 2020 08:00:00").getTime();
+
+var x = setInterval(function() {
+
+  var now = new Date().getTime();
+    
+  var distance = countDownDate - now;
+    
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+  document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+  + minutes + "m " + seconds + "s ";
+    
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("countdown").innerHTML = "EXPIRED";
+  }
+}, 1000);
+</script>
+
+</body>
